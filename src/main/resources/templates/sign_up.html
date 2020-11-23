@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      >
+<body>
+<div><a>车辆注册</a></div>
+
+<form th:action="@{/login/sign}" method="post">
+    <div><label> 账号<input type="text" name="username"/> </label></div>
+    <div><label> 密码<input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="注册"/></div>
+</form>
+</body>
+</html>
