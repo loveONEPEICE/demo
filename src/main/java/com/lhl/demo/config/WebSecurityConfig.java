@@ -22,10 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginPage("/login.html")//login.html
-                .defaultSuccessUrl("/home.html")
-                .successHandler(new MyAuthenctiationSuccessHandler())
-                .failureHandler(new MyAuthenctiationFailureHandler())
+                .loginPage("/home.html")//login.html
+//                .successHandler(new MyAuthenctiationSuccessHandler())
+//                .failureHandler(new MyAuthenctiationFailureHandler())
                 .loginProcessingUrl("/user/login")
                 .and()
                 .authorizeRequests()//授权配置
@@ -48,8 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("test1").password(setPassword().encode("000000")).roles("admin");
-//        auth.userDetailsService(userInfoService).passwordEncoder(setPassword());
+//        auth.inMemoryAuthentication().withUser("test1").password(setPassword().encode("000000")).roles("admin");
+        auth.userDetailsService(userInfoService).passwordEncoder(setPassword());
     }
 
     @Bean
